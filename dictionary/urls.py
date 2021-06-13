@@ -18,21 +18,17 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from dicto import views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.base),
     path('index/<str:w>', views.index),
+    path('index/<str:w>/<str:cat>', views.index1),
     path('add/', views.add),
-    path('edit/<str:eword>', views.edit),
+    path('edit/<str:eword>/<str:cat>', views.edit),
     path('show/', views.show),
-    path('delete/<str:eword>', views.delete),
-    
+    path('delete/<str:eword>/<str:cat>', views.delete),
 ]
-
 
 
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

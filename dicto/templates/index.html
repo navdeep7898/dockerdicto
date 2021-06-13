@@ -44,14 +44,21 @@
             </div>
             <div class="col-12">
                 <label for="use" class="text-white-50 mx-auto mt-2 mb-2">Uses :</label>
-                <input type="text" class="form-control" id="use" name="use" placeholder="Uses" value="{{word.uses}}" readonly>
+                <textarea type="free" class="form-control" id="use" name="use" placeholder="Uses"  readonly style="height: 150px;">{{word.uses}}</textarea>
             </div>
             
             <div class="col-12">
                 <label for="rword" class="text-white-50 mx-auto mt-2 mb-2">Related Word :</label>
-                <input type="text" class="form-control" id="rword" name="rword" placeholder="Related Word" value="{{word.rword}}" readonly>
+               
+                     
+           
+
+            {% if word.rword %}
+            {% for i in word.rword %}
+            <a style="border: 2px solid gray;border-radius: 6px; display: block;text-decoration:none;padding:10px;background-color: rgb(233 236 239);color: black;" href="/index/{{i}}">{{i}}</a>
+            {% endfor %}
+            {% endif %}
             </div>
-            <a href="/index/{{word.rword}}">{{word.rword}}</a>
         </form>
        
     </div>
@@ -65,14 +72,16 @@
                     <div class="col-lg-8">
                         
                         <div class="col-4">
+                        {% if word.image %}  
         <img src="{{word.image.url}}" alt="{{word.image}} ki image h idhar" height="300px" width="400px">
+                  {% endif %}      
         </div>
         <div>
         <div class="col-md-4 my-2">
-            <a class="btn btn-warning" href="/edit/{{word.eword}}" role="button">Edit</a>
+            <a class="btn btn-warning" href="/edit/{{word.eword}}/{{word.category}}" role="button">Edit</a>
         </div>
         <div class="col-md-4 my-3">
-            <a class="btn btn-danger" href="/delete/{{word.eword}}" role="button">Remove</a>
+            <a class="btn btn-danger" href="/delete/{{word.eword}}/{{word.category}}" role="button">Remove</a>
         </div>
         <div class="col-md-4 my-4">
             <a class="btn btn-outline-primary" href="/" role="button">Back</a>

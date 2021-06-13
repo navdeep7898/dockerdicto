@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'dictionary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "C:/sqlite-tools-win32-x86-3350400/my_db1",
+        'NAME': "db/my_db1",
     }
 }
 
